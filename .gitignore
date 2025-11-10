@@ -10,3 +10,4 @@ override.tf.json
 ansible/*.retry
 ansible/*.pem
 __pycache__/
+.venv/
