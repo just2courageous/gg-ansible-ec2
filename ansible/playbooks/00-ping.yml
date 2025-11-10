@@ -1,0 +1,7 @@
+---
+- name: P9 sanity ping
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Ping with control connection
+      ansible.builtin.ping:

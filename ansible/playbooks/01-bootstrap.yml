@@ -1,0 +1,48 @@
+---
+- name: Bootstrap Amazon Linux 2023
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Ensure dnf cache up-to-date
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_cache: true
+
+    - name: Install base packages
+      ansible.builtin.dnf:
+        name:
+          - python3
+          - python3-pip
+          - git
+          - tree
+          - htop
+        state: present
+
+    - name: Ensure SSM Agent is enabled and running
+      ansible.builtin.service:
+        name: amazon-ssm-agent
+        state: started
+        enabled: true
+
+    - name: MOTD banner
+      ansible.builtin.copy:
+        dest: /etc/motd
+        content: |
+          ########################################
+          #  Managed by Ansible (P9 Bootstrap)   #
+          #  Project: p9-ansible-ec2            #
+          ########################################
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Print kernel and hostname
+      ansible.builtin.shell: 'uname -r && hostname'
+      register: sysinfo
+      changed_when: false
+
+    - name: Show sysinfo
+      ansible.builtin.debug:
+        var: sysinfo.stdout_lines
