@@ -1,12 +1,13 @@
 # Runbook — gg-ansible-ec2 (P9)
 
-> Docs-only note: You may not have the environment running right now. This runbook is for when you rebuild later.
+> This runbook is for rebuilding later. Screenshots for proof live in **docs/screenshots/p9/**.
 
 ## 1) Terraform (Infrastructure as Code)
-• Open terminal in repo root  
-• `cd terraform`
+• Open terminal at repo root  
+• Go into Terraform folder
 
 ```bash
+cd terraform
 terraform init
 terraform plan
 terraform apply
