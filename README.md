@@ -36,3 +36,5 @@ Centralized **infrastructure automation**: provision **1× EC2 (Elastic Compute 
 
 ## 🧹 Cleanup
 • `terraform destroy` in `terraform/` (Terraform (Infrastructure as Code))
+
+Last updated: 2026-01-16
